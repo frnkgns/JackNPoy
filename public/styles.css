@@ -1,0 +1,44 @@
+@font-face {
+  font-family: "SamuraiFont"; /* Choose a name for your font */
+  src: url("SamuraiBlast") format("ttf"),
+  font-weight: normal;
+  font-style: normal;
+}
+
+.dice {
+  text-align: center;
+  display: inline-block;
+
+}
+
+body {
+  background-color: #393E46;
+  font-family: "SamuraiFont", sans-serif;
+
+}
+
+h1{
+  margin: 30px;
+  font-family: 'Lobster', cursive;
+  text-shadow: 5px 0 #232931;
+  font-size: 5rem;
+  color: #4ECCA3;
+}
+
+h3{
+  margin: 30px;
+  font-family: 'Lobster', cursive;
+  text-shadow: 5px 0 #232931;
+  font-size: 2rem;
+  color: #ffffff;
+}
+
+p {
+  font-size: 2rem;
+  color: #4ECCA3;
+  font-family: 'Indie Flower', cursive;
+}
+
+img {
+  width: 80%;
+}

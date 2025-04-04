@@ -1,55 +1,70 @@
-var NotPlayedYet = true;
+var Playing = false;
+let imgHand = document.querySelectorAll("img");
+let whosVictor = document.querySelector("h1");
+let playAgain = document.querySelector("h3");
+let pl1score = document.getElementById("pl1");
+let pl2score = document.getElementById("pl2");
+var Player1Score = 0;
+var Player2Score = 0;
+
 
 document.addEventListener("keydown", function(event) {
     if (event.key === "Enter") {
-        if (NotPlayedYet) {
+        if (!Playing) {
             Play();
-            NotPlayedYet = false; // Update flag
-        } else {
-            setTimeout(Play, 1500); // Pass function reference (without `()`)
-        }
+         } 
     }
 });
 
 
 function Play(){
-    // player 1
-    let imgDice = document.querySelectorAll("img");
+    Playing = true;
+    playAgain.classList.add("hidden");
 
-    const Player1Dice = Math.round(Math.random() * 5) + 1;
-    const Player2Dice = Math.round(Math.random() * 5) + 1;
+    imgHand[0].src = "images/left/rock.png";
+    imgHand[1].src = "images/right/rock.png";
+    whosVictor.textContent = "Jack N Poy!"
+
+    const Player1Hand = Math.round(Math.random() * 2) + 1;
+    const Player2Hand = Math.round(Math.random() * 2) + 1;
+
+    imgHand[0].classList.add("jackn-poy-anim");
+    imgHand[1].classList.add("jackn-poy-anim");
+
+    setTimeout(() =>{
+        var imgHand1 = new ThrowHand(Player1Hand, "images/left");
+        var imgHand2 = new ThrowHand(Player2Hand, "images/right");    
+
+        function ThrowHand(HandNumber, path){
+            this.HandNumber = (HandNumber == 1) ? `${path}/rock.png` : 
+            (HandNumber == 2) ? `${path}/paper.png` : 
+            `${path}/scissor.png`;
     
-    var imgDice1 = new ThrowDice(Player1Dice);
-    var imgDice2 = new ThrowDice(Player2Dice);
-        
-    function ThrowDice(DiceNumber, draw){
-        this.DiceNumber = (DiceNumber == 1) ? "diceImage/d1.png" : 
-        (DiceNumber == 2) ? "diceImage/d2.png" : 
-        (DiceNumber == 3) ? "diceImage/d3.png" :
-        (DiceNumber == 4) ? "diceImage/d4.png" :
-        (DiceNumber == 5) ? "diceImage/d5.png" :
-        "diceImage/d6.png";
-
-        imgDice[0].classList.add("spin-active1");
-        imgDice[1].classList.add("spin-active2");
-        new Audio((Player1Dice == Player2Dice) ? "sounds/draw.mp3" : "sounds/victory_6.mp3").play();
-        setTimeout(RemoveAni, 2000);
-
-        function RemoveAni(){
-            imgDice[0].classList.remove("spin-active1");
-            imgDice[1].classList.remove("spin-active2");
+            new Audio((Player1Hand == Player2Hand) ? "sounds/draw.wav" : "sounds/win.wav").play();
         }
-    }
-    
-    document.querySelector("h1").style.color = "white";
-    document.querySelector("h1").textContent = 
-        (Player1Dice > Player2Dice) ? "🚩 Player 1 Wins" : 
-        (Player2Dice > Player1Dice) ? "Player 2 Wins 🚩"  : "Draw";
-    
-    
-    imgDice[0].src = imgDice1.DiceNumber;
-    imgDice[1].src = imgDice2.DiceNumber;
+        
+        whosVictor.style.color = "white";
+        (Player1Hand == 1 && Player2Hand == 3) ? (whosVictor.textContent = "🚩 Player 1 Wins", Player1Score+=1) : 
+        (Player1Hand == 1 && Player2Hand == 2) ? (whosVictor.textContent = "Player 2 Wins 🚩", Player2Score+=1) : 
+        (Player1Hand == 2 && Player2Hand == 1) ? (whosVictor.textContent = "🚩 Player 1 Wins", Player1Score+=1): 
+        (Player1Hand == 2 && Player2Hand == 3) ? (whosVictor.textContent = "Player 2 Wins 🚩", Player2Score+=1): 
+        (Player1Hand == 3 && Player2Hand == 1) ? (whosVictor.textContent = "Player 2 Wins 🚩", Player2Score+=1) : 
+        (Player1Hand == 3 && Player2Hand == 2) ? (whosVictor.textContent = "🚩 Player 1 Wins", Player1Score+=1) : 
+        whosVictor.textContent = "Draw";
+                
+        imgHand[0].src = imgHand1.HandNumber;
+        imgHand[1].src = imgHand2.HandNumber;
 
+        console.log(Player1Score, ", ", Player2Score);
     
-   document.querySelector("h3").textContent = "Hit Enter to Play Again"
+       playAgain.classList.remove("hidden");
+       playAgain.style.color = "white";
+       pl1score.textContent = "Player 1: " + Player1Score;
+       pl2score.textContent = "Player 2: " + Player2Score;
+
+       imgHand[0].classList.remove("jackn-poy-anim");
+       imgHand[1].classList.remove("jackn-poy-anim");
+
+       Playing = false;
+    }, 500);
 }

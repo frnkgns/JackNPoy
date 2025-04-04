@@ -1,0 +1,14 @@
+/* jacknpoyAnimation.css */
+
+@keyframes jacknPoy {
+    0%   { transform: translateY(0); }
+    25%  { transform: translateY(-30px); }
+    50%  { transform: translateY(0); }
+    75%  { transform: translateY(-30px); }
+    100% { transform: translateY(0); }
+  }
+  
+  .jackn-poy-anim {
+    animation: jacknPoy 0.5s ease-in-out 1; /* Reduced duration to 0.3s for a faster shake */
+  }
+  
