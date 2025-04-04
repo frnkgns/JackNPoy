@@ -5,27 +5,36 @@
     <title>JackNPoy</title>
     <link rel="stylesheet" href="/public/styles.css" />
     <link rel="stylesheet" href="/public/jacknpoyAnimation.css" />
+    <link rel="icon" href="images/left/rock.png" type="image/x-icon">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
   </head>
-  <body>
-    <div class="items-center justify-center flex-col flex">
-      <h1 class="SamuraiFont">Hit Enter To Play</h1>
-      <div>
-        <div class="dice">
-          <img class="img1" src="images/left/rock.png" />
-          <p id="pl1">Player 1</p>
-        </div>
-  
-        <div class="dice">
-          <img class="img2" src="images/right/rock.png" />
-          <p id="pl2">Player 2</p>
-        </div>
-      </div>
-      <h3 class="hidden">Hit Enter to Play Again</h3>
-
+  <body class="overflow-hidden">
+    <div class="absolute z-50">
+      <button id="btnMusic" type="button" class="m-4 text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg 
+      text-3xl lg:text-base px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Music: On</button>
     </div>
-
+    <div class="w-screen h-screen items-center flex flex-col justify-center -translate-y-50 lg:-translate-y-0">
+      
+      <div class="items-center justify-center flex flex-col">
+        <p class="JnglAdvntr jnp !text-8xl lg:text-lg">Jack N Poy!</p>
+        <div class="justify-center flex items-center translate-y-20 lg:translate-y-10">
+  
+          <div class="flex flex-col items-center mr-10 lg:mr-32">
+            <img class="img1 w-[28rem] lg:w-[20rem]" src="images/left/rock.png" />
+            <p id="pl1" class="JnglAdvntr !text-5xl mt-4 lg:text-4xl">Player 1</p>
+          </div>
+    
+          <div class="flex-col flex items-center">
+            <img class="img2 w-[28rem] lg:w-[20rem]" src="images/right/rock.png" />
+            <p id="pl2" class="JnglAdvntr !text-5xl mt-4 lg:text-4xl">Player 2</p>
+          </div>
+        </div>  
+        <h3 class="opacity-0 JnglAdvntr translate-y-10" style="color: #4ECCA3">Hit Enter to Play Again</h3>
+        <button class="playagain text-white lg:hidden JnglAdvntr text-8xl mt-[5rem] text-yellow-500"> Play </button>
+      </div>
+    </div>
     <script src="index.js"></script>
+    <script src="btns.js"></script>
   </body>
 </html>

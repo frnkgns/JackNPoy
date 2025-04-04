@@ -1,25 +1,26 @@
 var Playing = false;
+var MusicPlaying = true;
 let imgHand = document.querySelectorAll("img");
-let whosVictor = document.querySelector("h1");
+let whosVictor = document.querySelector(".jnp");
 let playAgain = document.querySelector("h3");
 let pl1score = document.getElementById("pl1");
 let pl2score = document.getElementById("pl2");
+let playAgainBtn = document.querySelector(".playagain");
 var Player1Score = 0;
 var Player2Score = 0;
 
+//play background music
+const bgMusic = new Audio("sounds/MFCC.mp3");
+bgMusic.loop = true;
+bgMusic.volume = 0.5;
+bgMusic.play();
 
-document.addEventListener("keydown", function(event) {
-    if (event.key === "Enter") {
-        if (!Playing) {
-            Play();
-         } 
-    }
-});
-
+whosVictor.textContent = window.matchMedia("(min-width: 1024px)").matches ? "Press Enter To Play" : "Jack N Poy!";
 
 function Play(){
     Playing = true;
-    playAgain.classList.add("hidden");
+    playAgain.classList.add("opacity-0");
+    playAgainBtn.classList.add("opacity-0")
 
     imgHand[0].src = "images/left/rock.png";
     imgHand[1].src = "images/right/rock.png";
@@ -40,7 +41,9 @@ function Play(){
             (HandNumber == 2) ? `${path}/paper.png` : 
             `${path}/scissor.png`;
     
-            new Audio((Player1Hand == Player2Hand) ? "sounds/draw.wav" : "sounds/win.wav").play();
+            const winsfx = new Audio(Player1Hand == Player2Hand ? "sounds/draw.wav" : "sounds/win.wav");
+            winsfx.volume = 0.2; 
+            winsfx.play();
         }
         
         whosVictor.style.color = "white";
@@ -57,14 +60,15 @@ function Play(){
 
         console.log(Player1Score, ", ", Player2Score);
     
-       playAgain.classList.remove("hidden");
-       playAgain.style.color = "white";
-       pl1score.textContent = "Player 1: " + Player1Score;
-       pl2score.textContent = "Player 2: " + Player2Score;
+        (window.matchMedia("(min-width: 1024px)").matches) ? (playAgain.classList.remove("opacity-0")) : (playAgainBtn.classList.remove("hidden", "opacity-0"), playAgainBtn.textContent = "Play Again");
 
-       imgHand[0].classList.remove("jackn-poy-anim");
-       imgHand[1].classList.remove("jackn-poy-anim");
-
-       Playing = false;
+        playAgain.style.color = "white";
+        pl1score.textContent = "Player 1: " + Player1Score;
+        pl2score.textContent = "Player 2: " + Player2Score;
+        
+        imgHand[0].classList.remove("jackn-poy-anim");
+        imgHand[1].classList.remove("jackn-poy-anim");
+        
+        Playing = false;
     }, 500);
 }

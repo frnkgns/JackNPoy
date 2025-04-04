@@ -1,20 +1,29 @@
 @font-face {
-  font-family: "SamuraiFont"; /* Choose a name for your font */
-  src: url("SamuraiBlast") format("ttf"),
+  font-family: "JnglAdvntr"; /* Custom font name */
+  src: url("JungleAdventurer.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 
-.dice {
-  text-align: center;
-  display: inline-block;
+@font-face {
+  font-family: "Samurai"; /* Custom font name */
+  src: url("SamuraiBlast.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
 
+.Samurai{
+  font-family: "Samurai", sans-serif;
+}
+
+
+.JnglAdvntr {
+  font-family: "JnglAdvntr", sans-serif;
 }
 
 body {
   background-color: #393E46;
-  font-family: "SamuraiFont", sans-serif;
-
+  font-family: "JnglAdvntr", sans-serif;
 }
 
 h1{
@@ -33,12 +42,6 @@ h3{
   color: #ffffff;
 }
 
-p {
-  font-size: 2rem;
-  color: #4ECCA3;
-  font-family: 'Indie Flower', cursive;
-}
-
-img {
-  width: 80%;
+p{
+  color: white;
 }
