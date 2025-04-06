@@ -10,7 +10,7 @@ var Player1Score = 0;
 var Player2Score = 0;
 
 //play background music
-const bgMusic = new Audio("/sounds/MFCC.mp3");
+const bgMusic = new Audio("public/sounds/MFCC.mp3");
 bgMusic.loop = true;
 bgMusic.volume = 0.5;
 bgMusic.play();
@@ -22,8 +22,8 @@ function Play(){
     playAgain.classList.add("opacity-0");
     playAgainBtn.classList.add("opacity-0")
 
-    imgHand[0].src = "/images/left/rock.png";
-    imgHand[1].src = "/images/right/rock.png";
+    imgHand[0].src = "public/images/left/rock.png";
+    imgHand[1].src = "public/images/right/rock.png";
     whosVictor.textContent = "Jack N Poy!"
 
     const Player1Hand = Math.round(Math.random() * 2) + 1;
@@ -33,15 +33,15 @@ function Play(){
     imgHand[1].classList.add("jackn-poy-anim");
 
     setTimeout(() =>{
-        var imgHand1 = new ThrowHand(Player1Hand, "/images/left");
-        var imgHand2 = new ThrowHand(Player2Hand, "/images/right");    
+        var imgHand1 = new ThrowHand(Player1Hand, "public/images/left");
+        var imgHand2 = new ThrowHand(Player2Hand, "public/images/right");    
 
         function ThrowHand(HandNumber, path){
             this.HandNumber = (HandNumber == 1) ? `${path}/rock.png` : 
             (HandNumber == 2) ? `${path}/paper.png` : 
             `${path}/scissor.png`;
     
-            const winsfx = new Audio(Player1Hand == Player2Hand ? "/sounds/draw.wav" : "/sounds/win.wav");
+            const winsfx = new Audio(Player1Hand == Player2Hand ? "public/sounds/draw.wav" : "public/sounds/win.wav");
             winsfx.volume = 0.2; 
             winsfx.play();
         }
