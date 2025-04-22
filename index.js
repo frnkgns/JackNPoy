@@ -16,11 +16,14 @@ bgMusic.volume = 0.5;
 bgMusic.play();
 
 whosVictor.textContent = window.matchMedia("(min-width: 1024px)").matches ? "Press Enter To Play" : "Jack N Poy!";
+whosVictor.classList.add("!text-yellow-500");
 
 function Play(){
     Playing = true;
     playAgain.classList.add("opacity-0");
     playAgainBtn.classList.add("opacity-0")
+    whosVictor.classList.remove("!text-yellow-500");
+
 
     imgHand[0].src = "public/images/left/rock.png";
     imgHand[1].src = "public/images/right/rock.png";
@@ -60,7 +63,7 @@ function Play(){
 
         console.log(Player1Score, ", ", Player2Score);
     
-        (window.matchMedia("(min-width: 1024px)").matches) ? (playAgain.classList.remove("opacity-0")) : (playAgainBtn.classList.remove("hidden", "opacity-0"), playAgainBtn.textContent = "Play Again");
+        (window.matchMedia("(min-width: 1024px)").matches) ? (playAgain.classList.remove("opacity-0")) : (playAgainBtn.classList.remove("hidden", "opacity-0"), playAgainBtn.classList.add("text-yellow-500"),playAgainBtn.textContent = "Play Again");
 
         playAgain.style.color = "white";
         pl1score.textContent = "Player 1: " + Player1Score;
