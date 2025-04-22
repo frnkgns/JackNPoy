@@ -1,4 +1,4 @@
-# &#129307 Jack N Poy! &#129308
+# Jack N Poy!
 
 Are your luck better than mine? jack n poy!, choose what player you are then start playing by tapping on screen if you are using a mobile if not then you may use enter key to play the game. 
 
